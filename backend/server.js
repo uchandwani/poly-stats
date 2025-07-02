@@ -27,9 +27,15 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connection established"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: 'authDB', // 👈 Name of the database for authentication
+})
+.then(() => console.log("✅ MongoDB connection established"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
+
+
+
 
 // ✅ API Routes
 app.use('/api/auth', authRoutes);
