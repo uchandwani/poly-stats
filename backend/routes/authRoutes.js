@@ -7,6 +7,11 @@ import User from '../models/User.js'; // ✅ adjust if your path differs
 
 const router = express.Router();
 
+router.get("/test", (req, res) => {
+  res.json({ message: "Auth route working!" });
+});
+
+
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   console.log(`🔐 Login request for username: ${username}`);
