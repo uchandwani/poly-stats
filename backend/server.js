@@ -23,7 +23,11 @@ app.use((req, res, next) => {
 });
 
 // ✅ Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://uchandwani.github.io',  // ✅ allow GitHub Pages frontend
+  credentials: true, // Optional: if you ever send cookies or auth headers
+}));
+
 app.use(express.json());
 
 // ✅ MongoDB Connection
